@@ -7,9 +7,9 @@ const pokeNames = (app,data)=>{
     name.textContent = data.name
     div.appendChild(name)
     app.appendChild(div)
-
-    div.ondrag = (e)=>{
-        e.dataTransfer.setData('text',data.url)
+    
+    div.ondragstart = (e)=>{
+        e.dataTransfer.setData('url',data.url)
     }
 }
 

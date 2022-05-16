@@ -31,9 +31,10 @@ body{
     color: white;
 }
 .main_pokedex{
+    position: relative;
     background-color: blue;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
+    display: flex;
+    /* grid-template-columns: repeat(2,1fr); */
     margin: 10px;
 }
 .pokedex_list_pokemons{
@@ -41,8 +42,8 @@ body{
 }
 .pokedex_layout{
     position: relative;
-    margin-top: 5%;
-    width: 55rem;
+    margin: 20px;
+    width: 95%;
     height: 40rem;
     background-color: burlywood;
 }
