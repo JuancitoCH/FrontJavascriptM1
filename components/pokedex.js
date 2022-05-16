@@ -22,7 +22,13 @@ const pokedex = async () => {
     pokedex.ondragover =e=>e.preventDefault()
     pokedex.ondrop = (e)=>{
         e.preventDefault()
-        console.log(e.dataTransfer.getData('url'))
+        const pokemondata =e.dataTransfer.getData('url')
+        // console.log(pokemondata)
+        const div = document.getElementById(pokemondata)
+        console.log(div)
+        pokedex.appendChild(div)
+        console.log(div.getAttribute('url'))
+
     }
 
 
