@@ -56,8 +56,14 @@ body{
     border-radius: 5px;
     box-shadow: -5px 3px 5px rgba(37, 37, 37,.3);
     overflow-wrap: break-word;
+    color: rgb(241, 246, 250);
+
+}
+.poke_list_element:hover{
+    background-color: rgb(247, 247, 133);
+    color:  rgb(44, 44, 44);
+    cursor: pointer;
 }
 .poke_list_element p{
     position: relative;
-    color: rgb(241, 246, 250);
 }
