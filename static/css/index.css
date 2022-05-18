@@ -47,6 +47,7 @@ body{
     height: 40rem;
     background-color: rgb(204, 48, 48);
     border-radius: 0px 0px 20px 20px;
+    box-shadow: 10px 8px rgb(122, 29, 29);
 }
 .poke_list_element{
     width: 6.7rem;
@@ -69,17 +70,30 @@ body{
     position: relative;
 }
 .sprite{
-    background-color: rgb(233, 232, 232);
+    background-color: rgb(245, 244, 244);
     width: 8rem;
     border-radius: 0px 0px 5px 5px;
+    border: 5px inset ;
 }
 .dex{
     margin-left: 10px;
 }
 .zone_select{
     background-color: yellow;
+    border-radius: 0px 0px 0px 20px;
+
     width: 100px;
     height: 100px;
     position: absolute;
     bottom: 0;
+}
+.dex_data{
+    color: rgb(36, 36, 36);
+    background-color: rgb(51, 51, 51);
+    width: 8rem;
+    border-radius: 2px 2px 5px 5px;
+    /* border: 5px solid rgba(60, 63, 241, 0.5); */
+    /* box-shadow: 5px 5px 5px rgb(37, 37, 37,.5); */
+    border: 5px inset ;
+    color: white;
 }

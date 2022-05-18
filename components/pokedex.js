@@ -22,8 +22,10 @@ const pokedex = async () => {
     results.forEach(dataP => {
         pokeNames(listPokemons, dataP)
     });
-    pokedex.ondragover = e => e.preventDefault()
-    pokedex.ondrop = async(e)=>await pokemonOndrop(e,pokedex,vistaPokemon)
+    zoneSelectPokemon.ondragover = e => e.preventDefault()
+    zoneSelectPokemon.ondrop = async(e)=>await pokemonOndrop(e,zoneSelectPokemon,vistaPokemon,listPokemons)
+    
+    // Habria que pasar la vista y zona a un div para que en otro div ponga la escena de batalla
     
     pokedex.appendChild(vistaPokemon)
     pokedex.appendChild(zoneSelectPokemon)
@@ -38,16 +40,21 @@ const pokemonRequest = async (urlP) => {
         method: 'GET',
         // mode:"no-cors"
     }).then(data => data.json())
-    console.log(results)
+    // console.log(results)
     return results
 }
 
-const pokemonOndrop=async(e,pokedex,vistaPokemon) => {
+const pokemonOndrop=async(e,zoneSelectPokemon,vistaPokemon,listPokemons) => {
     e.preventDefault()
+    const elemnts = zoneSelectPokemon.childNodes
+    // console.log(elemnts.item(0))
+    if(elemnts.item(0)) listPokemons.appendChild(elemnts.item(0))
+
+    zoneSelectPokemon.innerHTML=''
     const pokemondata = e.dataTransfer.getData('url')
     const div = document.getElementById(pokemondata)
 
-    pokedex.appendChild(div)
+    zoneSelectPokemon.appendChild(div)
 
     const urlP = div.getAttribute('url')
     const pokemon = await pokemonRequest(urlP)
@@ -60,15 +67,23 @@ const pokemonOndrop=async(e,pokedex,vistaPokemon) => {
 
 const dexPokemon =async(data)=>{
     const dex = document.createElement('div')
+    const dexData = document.createElement('div')
     const sprite = document.createElement('img')
+    const name = document.createElement('p')
+    console.log(data)
+
 
     sprite.setAttribute('src',data.sprites.front_default)
 
     sprite.classList.add('sprite')
     dex.classList.add('dex')
+    dexData.classList.add('dex_data')
+
+    name.textContent = 'Name: ' + data.name
+    dexData.appendChild(name)
 
     dex.appendChild(sprite)
-    
+    dex.appendChild(dexData)
     return dex
 }
 
