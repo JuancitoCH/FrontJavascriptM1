@@ -28,7 +28,7 @@ const pokedex = async () => {
 
 
     results.forEach(dataP => {
-        pokeNames(listPokemons, dataP)
+        pokeNames(listPokemons, dataP,zoneSelectPokemon,vistaPokemon)
     });
     zoneSelectPokemon.ondragover = e => e.preventDefault()
     zoneSelectPokemon.ondrop = async(e)=>await pokemonOndrop(e,zoneSelectPokemon,vistaPokemon,listPokemons)
@@ -62,7 +62,7 @@ const pokemonOndrop=async(e,zoneSelectPokemon,vistaPokemon,listPokemons) => {
     
     const urlP = div.getAttribute('url')
     const pokemon = await pokemonRequest(urlP)
-    
+
     const elemntForView= await dexPokemon(pokemon)
     vistaPokemon.innerHTML =''
     vistaPokemon.appendChild(elemntForView)

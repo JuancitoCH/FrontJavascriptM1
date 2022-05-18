@@ -3,7 +3,7 @@ const dexPokemon =async(data)=>{
     const dexData = document.createElement('div')
     const sprite = document.createElement('img')
     const name = document.createElement('p')
-    console.log(data)
+    
 
 
     sprite.setAttribute('src',data.sprites.front_default)

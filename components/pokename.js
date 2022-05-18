@@ -1,4 +1,7 @@
-const pokeNames = (app,data)=>{
+import { pokemonRequest } from "../API/request.js"
+import { dexPokemon } from "./dex.js"
+
+const pokeNames = (app,data,zone,vista)=>{
     const div = document.createElement('div')
     div.classList.add('poke_list_element')
     div.setAttribute('url',data.url)
@@ -11,6 +14,27 @@ const pokeNames = (app,data)=>{
     div.ondragstart = (e)=>{
         e.dataTransfer.setData('url',data.url)
     }
+    div.onclick = async (e)=>{
+        zone.appendChild(div)
+        await Actualizar(zone,vista,app,div)
+    }
 }
 
 export {pokeNames}
+
+
+const Actualizar =async(zoneSelectPokemon,vistaPokemon,listPokemons,div) => {
+    const elemnts = zoneSelectPokemon.childNodes
+    if(elemnts.item(0)) listPokemons.appendChild(elemnts.item(0))
+    zoneSelectPokemon.innerHTML=''
+
+    zoneSelectPokemon.appendChild(div)
+    
+    const urlP = div.getAttribute('url')
+    const pokemon = await pokemonRequest(urlP)
+
+    const elemntForView= await dexPokemon(pokemon)
+    vistaPokemon.innerHTML =''
+    vistaPokemon.appendChild(elemntForView)
+}
+
