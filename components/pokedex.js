@@ -1,23 +1,31 @@
 import { pokeNames } from '../components/pokename.js'
+import { dexPokemon } from './dex.js'
+import { listPokemonsRequest,pokemonRequest } from '../API/request.js'
 
 const pokedex = async () => {
-    const { results } = await fetch('https://pokeapi.co/api/v2/pokemon/', {
-        method: 'GET',
-        // mode:"no-cors"
-    }).then(data => data.json())
+    const results = await listPokemonsRequest('https://pokeapi.co/api/v2/pokemon/')
 
-    const SectionPokedex = document.createElement('section')
-    const pokedex = document.createElement('article')
-    const vistaPokemon = document.createElement('article')
     const listPokemons = document.createElement('article')
+    const SectionPokedex = document.createElement('section')
+    // zona roja
+    const pokedex = document.createElement('article')
+    // sprite y info
+    const vistaPokemon = document.createElement('article')
+    // zona de dejar el poketmonster
     const zoneSelectPokemon = document.createElement('div')
-    // const listPokemons = document.createElement('article')
+    const contInfoVista = document.createElement('div')
 
-    SectionPokedex.classList.add('main_pokedex')
-    pokedex.classList.add('pokedex_layout')
-    vistaPokemon.classList.add('view_pokemon')
     listPokemons.classList.add('pokedex_list_pokemons')
+    SectionPokedex.classList.add('main_pokedex')
+
+    pokedex.classList.add('pokedex_layout')
+
+    contInfoVista.classList.add('info_zone')
+
+    vistaPokemon.classList.add('view_pokemon')
     zoneSelectPokemon.classList.add('zone_select')
+
+
 
     results.forEach(dataP => {
         pokeNames(listPokemons, dataP)
@@ -27,22 +35,18 @@ const pokedex = async () => {
     
     // Habria que pasar la vista y zona a un div para que en otro div ponga la escena de batalla
     
-    pokedex.appendChild(vistaPokemon)
-    pokedex.appendChild(zoneSelectPokemon)
+
+    contInfoVista.appendChild(vistaPokemon)
+    contInfoVista.appendChild(zoneSelectPokemon)
+
+    pokedex.appendChild(contInfoVista)
+
     SectionPokedex.appendChild(listPokemons)
     SectionPokedex.appendChild(pokedex)
     return SectionPokedex
 }
 
 
-const pokemonRequest = async (urlP) => {
-    const results = await fetch(urlP, {
-        method: 'GET',
-        // mode:"no-cors"
-    }).then(data => data.json())
-    // console.log(results)
-    return results
-}
 
 const pokemonOndrop=async(e,zoneSelectPokemon,vistaPokemon,listPokemons) => {
     e.preventDefault()
@@ -53,38 +57,16 @@ const pokemonOndrop=async(e,zoneSelectPokemon,vistaPokemon,listPokemons) => {
     zoneSelectPokemon.innerHTML=''
     const pokemondata = e.dataTransfer.getData('url')
     const div = document.getElementById(pokemondata)
-
+    
     zoneSelectPokemon.appendChild(div)
-
+    
     const urlP = div.getAttribute('url')
     const pokemon = await pokemonRequest(urlP)
-
-    const elemntForView=await dexPokemon(pokemon)
+    
+    const elemntForView= await dexPokemon(pokemon)
     vistaPokemon.innerHTML =''
     vistaPokemon.appendChild(elemntForView)
-
-}
-
-const dexPokemon =async(data)=>{
-    const dex = document.createElement('div')
-    const dexData = document.createElement('div')
-    const sprite = document.createElement('img')
-    const name = document.createElement('p')
-    console.log(data)
-
-
-    sprite.setAttribute('src',data.sprites.front_default)
-
-    sprite.classList.add('sprite')
-    dex.classList.add('dex')
-    dexData.classList.add('dex_data')
-
-    name.textContent = 'Name: ' + data.name
-    dexData.appendChild(name)
-
-    dex.appendChild(sprite)
-    dex.appendChild(dexData)
-    return dex
+    
 }
 
 
