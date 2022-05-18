@@ -32,7 +32,7 @@ body{
 }
 .main_pokedex{
     position: relative;
-    background-color: blue;
+    /* background-color: blue; */
     display: flex;
     /* grid-template-columns: repeat(2,1fr); */
     margin: 10px;
@@ -45,7 +45,8 @@ body{
     margin: 20px;
     width: 95%;
     height: 40rem;
-    background-color: burlywood;
+    background-color: rgb(204, 48, 48);
+    border-radius: 0px 0px 20px 20px;
 }
 .poke_list_element{
     width: 6.7rem;
@@ -66,4 +67,19 @@ body{
 }
 .poke_list_element p{
     position: relative;
+}
+.sprite{
+    background-color: rgb(233, 232, 232);
+    width: 8rem;
+    border-radius: 0px 0px 5px 5px;
+}
+.dex{
+    margin-left: 10px;
+}
+.zone_select{
+    background-color: yellow;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
 }

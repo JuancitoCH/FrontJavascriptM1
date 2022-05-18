@@ -10,12 +10,14 @@ const pokedex = async () => {
     const pokedex = document.createElement('article')
     const vistaPokemon = document.createElement('article')
     const listPokemons = document.createElement('article')
+    const zoneSelectPokemon = document.createElement('div')
     // const listPokemons = document.createElement('article')
 
     SectionPokedex.classList.add('main_pokedex')
     pokedex.classList.add('pokedex_layout')
     vistaPokemon.classList.add('view_pokemon')
     listPokemons.classList.add('pokedex_list_pokemons')
+    zoneSelectPokemon.classList.add('zone_select')
 
     results.forEach(dataP => {
         pokeNames(listPokemons, dataP)
@@ -24,6 +26,7 @@ const pokedex = async () => {
     pokedex.ondrop = async(e)=>await pokemonOndrop(e,pokedex,vistaPokemon)
     
     pokedex.appendChild(vistaPokemon)
+    pokedex.appendChild(zoneSelectPokemon)
     SectionPokedex.appendChild(listPokemons)
     SectionPokedex.appendChild(pokedex)
     return SectionPokedex
@@ -56,9 +59,17 @@ const pokemonOndrop=async(e,pokedex,vistaPokemon) => {
 }
 
 const dexPokemon =async(data)=>{
+    const dex = document.createElement('div')
     const sprite = document.createElement('img')
+
     sprite.setAttribute('src',data.sprites.front_default)
-    return sprite
+
+    sprite.classList.add('sprite')
+    dex.classList.add('dex')
+
+    dex.appendChild(sprite)
+    
+    return dex
 }
 
 
