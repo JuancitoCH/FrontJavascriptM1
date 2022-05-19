@@ -1,0 +1,95 @@
+.main_pokedex{
+    position: relative;
+    /* background-color: blue; */
+    display: flex;
+    /* grid-template-columns: repeat(2,1fr); */
+    margin: 10px;
+}
+.pokedex_list_pokemons{
+    
+}
+.pokedex_layout{
+    position: relative;
+    display: flex;
+    /* justify-content: center; */
+    margin: 20px;
+    width: 95%;
+    height: 40rem;
+    background-color: rgb(204, 54, 54);
+    border-radius: 0px 0px 20px 20px;
+    box-shadow: 10px 8px rgb(122, 29, 29);
+}
+.poke_list_element{
+    width: 6.7rem;
+    position: relative;
+    background-color: rgb(44, 44, 44);
+    margin: .4rem;
+    padding: .3rem .5rem;
+    border-radius: 5px;
+    box-shadow: -5px 3px 5px rgba(37, 37, 37,.3);
+    overflow-wrap: break-word;
+    color: rgb(241, 246, 250);
+
+}
+.poke_list_element:hover{
+    background-color: rgb(247, 247, 133);
+    color:  rgb(44, 44, 44);
+    cursor: pointer;
+}
+.poke_list_element p{
+    position: relative;
+    transition: all ease 500ms;
+}
+.sprite{
+    background-color: rgb(245, 244, 244);
+    width: 8rem;
+    height: 8rem;
+    border-radius: 0px 0px 5px 5px;
+    border: 5px inset ;
+}
+.dex{
+    margin-left: 10px;
+}
+.zone_select{
+    background-color: rgb(248, 203, 192);
+    border-radius: 0px 0px 0px 20px;
+
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+}
+
+
+.zone_select .poke_list_element{
+    padding: 0;
+    text-align: center;
+    margin: 5px 0 0 2px;
+    width: 80px;
+    height: 50px;
+    position: absolute;
+    bottom: 10px;
+    font-size: 13px;
+    /* animation: ; */
+}
+
+.dex_data{
+    color: rgb(36, 36, 36);
+    background-color: rgb(51, 51, 51);
+    width: 8rem;
+    border-radius: 2px 2px 5px 5px;
+    /* border: 5px solid rgba(60, 63, 241, 0.5); */
+    /* box-shadow: 5px 5px 5px rgb(37, 37, 37,.5); */
+    border: 5px inset ;
+    color: white;
+}
+
+.info_zone{
+    background-color: rgb(167, 39, 39);
+    box-shadow: 10px 2px rgb(197, 64, 64);
+    width: fit-content;
+    padding-right: 2rem;
+    height: 100%;
+    border-radius: 0px 3px 3px 20px;
+
+}

@@ -61,9 +61,9 @@ const battlePanel=()=>{
     buttonB.classList.add('buttonB')
     buttonB.classList.add('buttonBaya')
 
-    buttonA.textContent='A'
-    buttonB.textContent='B'
-    buttonBaya.textContent='Heal'
+    buttonA.textContent='Attack'
+    buttonB.textContent='Special Attack'
+    buttonBaya.textContent='Baya'
 
     buttonBaya.setAttribute('baya',5)
 
