@@ -1,5 +1,6 @@
 import { pokemonRequest } from "../API/request.js"
 import { dexPokemon } from "./dex.js"
+import { layoutFight } from "./fight.js"
 
 const pokeNames = (app,data,zone,vista)=>{
     const div = document.createElement('div')
@@ -36,5 +37,30 @@ const Actualizar =async(zoneSelectPokemon,vistaPokemon,listPokemons,div) => {
     const elemntForView= await dexPokemon(pokemon)
     vistaPokemon.innerHTML =''
     vistaPokemon.appendChild(elemntForView)
+
+
+
+    const pokedex = document.querySelector('.pokedex_layout')
+    const prevFight = document.querySelector('.layout_fight')
+    prevFight?.remove()
+    
+    // console.log(pokedex)
+    // console.log(prevFight)
+    const enemy = await pokemonRequest(RandomEnemys())
+    const fight = layoutFight(pokemon,enemy)
+    
+    pokedex.appendChild(fight)
+
 }
 
+const RandomEnemys=()=>{
+    const enemies={
+        mewtwo:'https://pokeapi.co/api/v2/pokemon/mewtwo',
+        mew:'https://pokeapi.co/api/v2/pokemon/mew',
+        celebi:'https://pokeapi.co/api/v2/pokemon/celebi',
+        zapdos :'https://pokeapi.co/api/v2/pokemon/zapdos',
+        latios:'https://pokeapi.co/api/v2/pokemon/latios',
+        latias:'https://pokeapi.co/api/v2/pokemon/latias',
+    }
+    return( enemies[Object.keys(enemies)[Math.floor(Math.random()*Object.keys(enemies).length)]] )
+}

@@ -1,6 +1,8 @@
 import { pokeNames } from '../components/pokename.js'
 import { dexPokemon } from './dex.js'
 import { listPokemonsRequest,pokemonRequest } from '../API/request.js'
+import { layoutFight } from './fight.js'
+
 
 const pokedex = async () => {
     const results = await listPokemonsRequest('https://pokeapi.co/api/v2/pokemon/')
@@ -66,6 +68,18 @@ const pokemonOndrop=async(e,zoneSelectPokemon,vistaPokemon,listPokemons) => {
     const elemntForView= await dexPokemon(pokemon)
     vistaPokemon.innerHTML =''
     vistaPokemon.appendChild(elemntForView)
+
+
+    // FIGHT
+    const pokedex = document.querySelector('.pokedex_layout')
+    const prevFight = document.querySelector('.layout_fight')
+    prevFight?.remove()
+    
+    console.log(pokedex)
+    console.log(prevFight)
+    
+    const fight = layoutFight(pokemon,pokemon)
+    pokedex.appendChild(fight)
     
 }
 

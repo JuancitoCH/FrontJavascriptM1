@@ -42,6 +42,8 @@ body{
 }
 .pokedex_layout{
     position: relative;
+    display: flex;
+    /* justify-content: center; */
     margin: 20px;
     width: 95%;
     height: 40rem;

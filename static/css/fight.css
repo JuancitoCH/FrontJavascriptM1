@@ -1,0 +1,59 @@
+.layout_fight{
+    position: absolute;
+    background-color: rgb(213, 230, 207);
+    width: 40%;
+    align-self: center;
+    left: 40%;
+    top: 5rem;
+    /* float: right; */
+}
+
+
+.myPokemon{
+    background-color: aqua;
+    width: fit-content;
+}
+.myPokemon_name{
+
+}
+.myPokemon_hp_bar{
+
+}
+.myPokemon_hp{
+
+}
+.myPokemon_sprite{
+
+}
+
+
+
+.enemy{
+    position: relative;
+    background-color: rgb(255, 0, 234);
+    width: fit-content;
+    left: 50%;
+}
+.enemy_name{
+
+}
+.enemy_hp_bar{
+
+}
+.enemy_hp{
+
+}
+.enemy_sprite{
+
+}
+
+.pad{
+
+}
+
+.buttonA{
+    
+}
+.buttonB{
+
+}
