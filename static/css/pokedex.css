@@ -13,7 +13,7 @@
     display: flex;
     /* justify-content: center; */
     margin: 20px;
-    width: 95%;
+    width: 70%;
     height: 40rem;
     background-color: rgb(204, 54, 54);
     border-radius: 0px 0px 20px 20px;
@@ -51,7 +51,7 @@
     margin-left: 10px;
 }
 .zone_select{
-    background-color: rgb(248, 203, 192);
+    background-color: rgb(119, 15, 15);
     border-radius: 0px 0px 0px 20px;
 
     width: 100px;
@@ -63,13 +63,23 @@
 
 .zone_select .poke_list_element{
     padding: 0;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 5px 0 0 2px;
     width: 80px;
-    height: 50px;
+    height: 80px;
     position: absolute;
     bottom: 10px;
     font-size: 13px;
+    background-image: url('../images/cart.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* transform: rotate(180deg); */
+    color: rgb(34, 33, 33);
+    font-size: 1rem;
+    font-weight: 900;
     /* animation: ; */
 }
 
@@ -91,5 +101,5 @@
     padding-right: 2rem;
     height: 100%;
     border-radius: 0px 3px 3px 20px;
-
+    transition: all ease 2s;
 }

@@ -1,7 +1,9 @@
 const layoutFight=(data,enemyData)=>{
     const layout = document.createElement('section')
+    const texture = document.createElement('div')
     
     layout.classList.add('layout_fight')
+    texture.classList.add('texture')
 
     const pokemonLayout = pokemonToFight(data,'myPokemon')
     const enemyLayout = pokemonToFight(enemyData)
@@ -11,6 +13,7 @@ const layoutFight=(data,enemyData)=>{
 
     const Pad = battlePanel()
     layout.appendChild(Pad)
+    layout.appendChild(texture)
 
     return layout
 }
@@ -90,7 +93,18 @@ const buttonOnClick=(type)=>{
     enemy.setAttribute('hp',damage(statsToEnemy))
     setTimeout(()=>{
         enemy.childNodes[2].textContent=enemy.getAttribute('hp')
-    },1000)
+    },500)
+
+    if(damage(statsToEnemy)<=0){
+        const layout_Fight = document.querySelector('.layout_fight')
+        
+        const Win = document.createElement('div')
+
+        Win.classList.add('win')
+        Win.textContent = 'YOU WIN'
+
+        layout_Fight.appendChild(Win)
+    }
 
     EnemyAttack()
 
@@ -98,13 +112,12 @@ const buttonOnClick=(type)=>{
 
 const damage =({hp,defense,damage})=>{
     const recived = Math.floor(hp - ((damage/2)-(defense/3)))
-    console.log(recived)
+    
     return recived
 }
 
 const bayaOnclick =(btn,heal=30)=>{
     if(!(btn.getAttribute('baya')>0)) return 
-    console.log(btn)
     const PokemonStats = document.querySelector('.myPokemon')
     const hp = parseInt( PokemonStats.getAttribute('hp'))
     PokemonStats.setAttribute('hp',hp+heal)
@@ -122,6 +135,7 @@ const EnemyAttack=()=>{
     const hp = PokemonStats.getAttribute('hp')
     const enemy =document.querySelector('.enemy')
 
+    if(hp<=0) return 
 
     const statsToMy ={
         hp,
@@ -129,8 +143,19 @@ const EnemyAttack=()=>{
         damage:enemy.getAttribute('attack')
     }
     PokemonStats.setAttribute('hp',damage(statsToMy))
+
+    if(damage(statsToMy)<=0){
+        const layout_Fight = document.querySelector('.layout_fight')
+        const GameOver = document.createElement('div')
+
+        GameOver.classList.add('gameover')
+        GameOver.textContent = 'GAME OVER'
+
+        layout_Fight.appendChild(GameOver)
+    }
     setTimeout(()=>{
         PokemonStats.childNodes[2].textContent=PokemonStats.getAttribute('hp')
+        
     },1500)
 }
 
