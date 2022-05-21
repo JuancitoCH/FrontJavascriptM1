@@ -2,15 +2,24 @@ import { pokemonRequest } from "../API/request.js"
 import { dexPokemon } from "./dex.js"
 import { layoutFight } from "./fight.js"
 
-const pokeNames = (app,data,zone,vista)=>{
+// generation-vii.icons.front_default
+const pokeNames =async (app,data,zone,vista)=>{
+    const infoPokemon = await pokemonRequest(data.url)
+
     const div = document.createElement('div')
-    div.classList.add('poke_list_element')
+    const icon = document.createElement('img')
+
+
     div.setAttribute('url',data.url)
+    icon.setAttribute('src',infoPokemon.sprites.versions['generation-vii'].icons.front_default)
+
+    icon.classList.add('poke_icon')
+    div.classList.add('poke_list_element')
     div.draggable = true
+    
     const name = document.createElement('p')
     name.textContent = data.name
-    div.appendChild(name)
-    app.appendChild(div)
+    
     div.id = data.url
     div.ondragstart = (e)=>{
         e.dataTransfer.setData('url',data.url)
@@ -19,6 +28,10 @@ const pokeNames = (app,data,zone,vista)=>{
         zone.appendChild(div)
         await Actualizar(zone,vista,app,div)
     }
+
+    div.appendChild(name)
+    div.appendChild(icon)
+    app.appendChild(div)
 }
 
 export {pokeNames}
