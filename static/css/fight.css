@@ -118,3 +118,12 @@
     position: absolute;
     top: 0;
 }
+
+@media (max-width:600px) {
+    .layout_fight{
+        width: 70%;
+        top: 10rem;
+        left: 3.8rem;
+
+    }
+}

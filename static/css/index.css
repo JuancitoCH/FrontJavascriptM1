@@ -27,7 +27,7 @@ body{
     justify-content: center;
     bottom: 0;
     height: 7rem;
-    width: 100vw;
+    width: 100%;
     background-color: rgb(37, 37, 37);
     color: white;
 }
