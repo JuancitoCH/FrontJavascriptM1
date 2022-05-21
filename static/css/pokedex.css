@@ -40,12 +40,27 @@
     position: relative;
     transition: all ease 500ms;
 }
-.sprite{
+.contenedor_sprite{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(245, 244, 244);
-    width: 8rem;
-    height: 8rem;
     border-radius: 0px 0px 5px 5px;
     border: 5px inset ;
+    width: 8rem;
+    height: 6rem;
+    margin-bottom: .5rem;
+    margin-bottom: .5rem;
+}
+.sprite{
+    position: absolute;
+    display: block;
+    /* margin: auto; */
+    /* top: 25%;
+    left: 25%; */
+    
+    
 }
 .dex{
     margin-left: 10px;

@@ -75,8 +75,8 @@ const pokemonOndrop=async(e,zoneSelectPokemon,vistaPokemon,listPokemons) => {
     const prevFight = document.querySelector('.layout_fight')
     prevFight?.remove()
     
-    console.log(pokedex)
-    console.log(prevFight)
+    // console.log(pokedex)
+    // console.log(prevFight)
     
     const fight = layoutFight(pokemon,pokemon)
     pokedex.appendChild(fight)

@@ -38,7 +38,7 @@ const pokemonToFight=(data,type='enemy')=>{
     myPokemon.setAttribute('attack',data.stats[1].base_stat)
     myPokemon.setAttribute('defense',data.stats[2].base_stat)
     
-    sprite.setAttribute('src',type==='enemy'?data.sprites.front_default : data.sprites.back_default)
+    sprite.setAttribute('src',type==='enemy'?data.sprites.versions['generation-v']['black-white'].animated.front_default : data.sprites.versions['generation-v']['black-white'].animated.back_default)
     
     name.textContent = data.name
     hp.textContent = myPokemon.getAttribute('hp')
