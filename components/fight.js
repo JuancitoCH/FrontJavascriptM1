@@ -70,8 +70,8 @@ const battlePanel=()=>{
 
     buttonBaya.setAttribute('baya',5)
 
-    buttonA.onclick=(e)=>buttonOnClick('A')
-    buttonB.onclick=(e)=>buttonOnClick('B')
+    buttonA.onclick=(e)=>buttonOnClick('A',e)
+    buttonB.onclick=(e)=>buttonOnClick('B',e)
     buttonBaya.onclick=(e)=>bayaOnclick(buttonBaya,50)
 
     pad.appendChild(buttonA)
@@ -80,10 +80,16 @@ const battlePanel=()=>{
     return pad
 }
 
-const buttonOnClick=(type)=>{
+const buttonOnClick=(type,event)=>{
     const PokemonStats = document.querySelector('.myPokemon')
     const attack = PokemonStats.getAttribute('attack')
     const enemy =document.querySelector('.enemy')
+
+    PokemonStats.classList.add('golpe_me')
+    setTimeout(()=>{
+    PokemonStats.classList.remove('golpe_me')
+    },1300)
+
 
     const statsToEnemy ={
         hp:enemy.getAttribute('hp'),
@@ -93,7 +99,7 @@ const buttonOnClick=(type)=>{
     enemy.setAttribute('hp',damage(statsToEnemy))
     setTimeout(()=>{
         enemy.childNodes[2].textContent=enemy.getAttribute('hp')
-    },500)
+    },1000)
 
     if(damage(statsToEnemy)<=0){
         const layout_Fight = document.querySelector('.layout_fight')
@@ -104,6 +110,7 @@ const buttonOnClick=(type)=>{
         Win.textContent = 'YOU WIN'
 
         layout_Fight.appendChild(Win)
+        return
     }
 
     EnemyAttack()
@@ -137,6 +144,11 @@ const EnemyAttack=()=>{
 
     if(hp<=0) return 
 
+    enemy.classList.add('golpe_enemy')
+    setTimeout(()=>{
+    enemy.classList.remove('golpe_enemy')
+    },2300)
+
     const statsToMy ={
         hp,
         defense,
@@ -156,7 +168,7 @@ const EnemyAttack=()=>{
     setTimeout(()=>{
         PokemonStats.childNodes[2].textContent=PokemonStats.getAttribute('hp')
         
-    },1500)
+    },2000)
 }
 
 export {layoutFight}

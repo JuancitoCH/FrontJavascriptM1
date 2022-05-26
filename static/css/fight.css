@@ -79,7 +79,7 @@
 }
 
 .pad button{
-    border-radius: 50%;
+    /* border-radius: 50%; */
     border: none;
     display: block;
     background-color: white;
@@ -125,5 +125,42 @@
         top: 10rem;
         left: 3.8rem;
 
+    }
+}
+.golpe_me{
+    animation: golpe_me 1.3s ease-in;
+}
+.golpe_enemy{
+    animation: golpe_enemy 1s ease-in;
+    animation-delay: 1.3s;
+}
+
+
+@keyframes golpe_me{
+    0%{
+      /* transform: translate(30px,10px); */
+    }
+    33%{
+        transform: translate(-10px,10px);
+    }
+    66%{
+        transform: translate(30px,-15px);
+    }
+    100%{
+        transform: translate(0,0);
+    }
+}
+@keyframes golpe_enemy{
+    0%{
+      /* transform: translate(30px,10px); */
+    }
+    33%{
+        transform: translate(10px,-10px);
+    }
+    66%{
+        transform: translate(-30px,15px);
+    }
+    100%{
+        transform: translate(0,0);
     }
 }
